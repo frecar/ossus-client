@@ -1,4 +1,4 @@
-package ossus.agent.app;
+package exceptions;
 
 
 public class InvalidSettingsException extends Throwable {

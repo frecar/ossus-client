@@ -1,5 +1,6 @@
 package ossus.agent.app;
 
+import exceptions.InvalidSettingsException;
 import junit.framework.TestCase;
 import org.json.JSONObject;
 

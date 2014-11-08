@@ -1,5 +1,6 @@
 package ossus.agent.app;
 
+import exceptions.InvalidSettingsException;
 import org.json.JSONException;
 import org.json.JSONObject;
 
