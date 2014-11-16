@@ -1,6 +1,6 @@
 *.class
 
-ossus-agent/target/
+ossus-agent/target
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
