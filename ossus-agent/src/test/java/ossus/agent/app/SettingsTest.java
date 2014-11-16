@@ -4,15 +4,20 @@ import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.JsonObjectParser;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import exceptions.InvalidSettingsException;
-import junit.framework.TestCase;
 import org.json.JSONObject;
+import org.junit.Test;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class SettingsTest extends TestCase {
+import static org.junit.Assert.assertEquals;
 
+public class SettingsTest {
+
+    static final JsonFactory JSON_FACTORY = new JacksonFactory();
+
+    @Test
     public void testBuildInvalidSettings() {
 
         JSONObject jsonObject = new JSONObject();
@@ -28,8 +33,8 @@ public class SettingsTest extends TestCase {
 
     }
 
-    static final JsonFactory JSON_FACTORY = new JacksonFactory();
 
+    @Test
     public void testBuildSettingsFromFile() throws IOException {
 
         try {
@@ -52,6 +57,7 @@ public class SettingsTest extends TestCase {
 
     }
 
+    @Test
     public void testBuildSettingsFromJsonObject() throws InvalidSettingsException {
 
         JSONObject jsonObject = new JSONObject();

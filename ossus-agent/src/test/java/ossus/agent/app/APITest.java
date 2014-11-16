@@ -1,14 +1,15 @@
 package ossus.agent.app;
 
 import exceptions.InvalidSettingsException;
-import junit.framework.TestCase;
 import org.json.JSONObject;
+import org.junit.Ignore;
+import org.junit.Test;
 
 import java.io.IOException;
 
 import static org.junit.Assert.*;
 
-public class APITest extends TestCase {
+public class APITest  {
 
     Settings settings;
 
@@ -30,6 +31,8 @@ public class APITest extends TestCase {
         }
     }
 
+    @Ignore("Not Ready to Run")
+    @Test
     public void testConnection() throws InvalidSettingsException, IOException {
         API api = new API(this.settings);
         Server server = api.getServer(1);
