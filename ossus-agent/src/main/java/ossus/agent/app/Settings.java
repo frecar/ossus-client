@@ -1,5 +1,6 @@
 package ossus.agent.app;
 
+import com.google.api.client.util.Key;
 import exceptions.InvalidSettingsException;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -19,31 +20,45 @@ public class Settings {
         this.session = (System.currentTimeMillis() / 1000) + new Random().nextInt(150);
      */
 
+    @Key("id")
     private String id;
-    private String ip;
+
+    @Key("server_ip")
+    private String server_ip;
+
+    @Key("api_user")
     private String apiUser;
+
+    @Key("mysql_dump")
+    private String mysqlDump;
+
+    @Key("api_token")
     private String apiToken;
+
+    @Key("agent_folder")
     private String workingDirectory;
+
+    @Key("local_temp_folder")
     private String tmpDirectory;
-    private String session;
+
+    public Settings() {}
 
     public Settings(JSONObject data) throws InvalidSettingsException {
         try {
-            this.ip = (String) data.get("ip");
+            this.server_ip = (String) data.get("server_ip");
             this.id = (String) data.get("id");
             this.apiUser = (String) data.get("api_user");
             this.apiToken = (String) data.get("api_token");
-            this.workingDirectory = (String) data.get("working_directory");
-            this.tmpDirectory = (String) data.get("tmp_directory");
-            this.session = (String) data.get("session");
+            this.workingDirectory = (String) data.get("agent_folder");
+            this.tmpDirectory = (String) data.get("local_temp_folder");
 
         } catch (JSONException e) {
             throw new InvalidSettingsException("You need to specify all required fields in settings file: " + e);
         }
     }
 
-    public String getIp() {
-        return ip;
+    public String getServer_ip() {
+        return server_ip;
     }
 
     public String getApiUser() {
@@ -62,11 +77,11 @@ public class Settings {
         return tmpDirectory;
     }
 
-    public String getSession() {
-        return session;
-    }
-
     public String getId() {
         return id;
+    }
+
+    public String getMysqlDump() {
+        return mysqlDump;
     }
 }

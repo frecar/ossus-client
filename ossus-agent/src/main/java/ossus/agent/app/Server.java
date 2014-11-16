@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 public class Server {
 
+    private Settings settings;
+
     @Key
     private long id;
 
