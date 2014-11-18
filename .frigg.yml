@@ -1,0 +1,2 @@
+tasks:
+  - cd ossus-agent && mvn -B test
