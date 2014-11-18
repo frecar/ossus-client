@@ -67,6 +67,7 @@ public class SettingsTest {
         jsonObject.put("api_token", "test_token");
         jsonObject.put("agent_folder", "folder");
         jsonObject.put("local_temp_folder", "tmp_directory");
+        jsonObject.put("mysql_dump", "mysqldump");
 
         Settings settings = new Settings(jsonObject);
 

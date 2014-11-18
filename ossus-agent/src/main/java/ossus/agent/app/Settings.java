@@ -41,7 +41,7 @@ public class Settings {
     @Key("local_temp_folder")
     private String tmpDirectory;
 
-    public Settings() {}
+    public Settings() {};
 
     public Settings(JSONObject data) throws InvalidSettingsException {
         try {
@@ -51,10 +51,23 @@ public class Settings {
             this.apiToken = (String) data.get("api_token");
             this.workingDirectory = (String) data.get("agent_folder");
             this.tmpDirectory = (String) data.get("local_temp_folder");
+            this.mysqlDump = (String) data.get("mysql_dump");
 
         } catch (JSONException e) {
             throw new InvalidSettingsException("You need to specify all required fields in settings file: " + e);
         }
+    }
+
+    public boolean verify() {
+        if(this.getServer_ip() == null || this.getServer_ip().length()<1) return false;
+        if(this.getId().length()<1) return false;
+        if(this.getApiUser().length()<1) return false;
+        if(this.getApiToken().length()<1) return false;
+        if(this.getMysqlDump().length()<1) return false;
+        if(this.getTmpDirectory().length()<1) return false;
+        if(this.getWorkingDirectory().length()<1) return false;
+
+        return true;
     }
 
     public String getServer_ip() {

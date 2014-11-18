@@ -26,11 +26,20 @@ public class API {
         public ServerUrl(String encodedUrl) {
             super(encodedUrl);
         }
-        @Key
-        public String fields;
     }
 
-    public Server getServer(long id) {
+    private ServerUrl buildServerUrl(String str) {
+        String host = settings.getServer_ip();
+        String auth = "?api_user=" + settings.getApiUser() + "&&api_token=" + settings.getApiToken();
+
+        if(!host.endsWith("/")) {
+            host+="/";
+        }
+
+        return new ServerUrl(host + "api/" + str + auth);
+    }
+
+    public Server getServer() throws IOException {
 
         HttpRequestFactory requestFactory = HTTP_TRANSPORT.createRequestFactory(
                 new HttpRequestInitializer() {
@@ -40,15 +49,12 @@ public class API {
                     }
                 });
 
-        ServerUrl url = new ServerUrl("http://localhost:8000/api/servers/1?api_user=1&api_token=4ae0c36da907994c6458958e262c7b3f0677d035");
+        ServerUrl url = buildServerUrl("servers/"+settings.getId());
+
         HttpRequest request = null;
-        try {
-            request = requestFactory.buildGetRequest(url);
-            return request.execute().parseAs(Server.class);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
+
+        request = requestFactory.buildGetRequest(url);
+        return request.execute().parseAs(Server.class);
     }
 
 }

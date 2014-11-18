@@ -22,6 +22,7 @@ public class APITest  {
         jsonObject.put("api_token", "4ae0c36da907994c6458958e262c7b3f0677d035");
         jsonObject.put("agent_folder", "folder");
         jsonObject.put("local_temp_folder", "tmp_directory");
+        jsonObject.put("mysql_dump", "mysqldump");
         jsonObject.put("session", "123");
 
         try {
@@ -35,7 +36,7 @@ public class APITest  {
     @Test
     public void testConnection() throws InvalidSettingsException, IOException {
         API api = new API(this.settings);
-        Server server = api.getServer(1);
+        Server server = api.getServer();
         assertEquals(1, server.getId());
     }
 
