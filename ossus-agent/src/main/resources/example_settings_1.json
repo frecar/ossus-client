@@ -1,5 +1,5 @@
 {
-    "sever_ip": "http://localhost:8000/",
+    "server_ip": "http://localhost:8000/",
     "api_user": "1",
     "api_token": "4ae0c36da907994c6458958e262c7b3f0677d035",
     "local_temp_folder": "C:\\focus24\\temp\\",
